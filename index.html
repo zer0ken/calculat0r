@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="src/style.css">
+
+    <title>계산기</title>
+</head>
+
+<body>
+    <div class="container">
+        <table class="calculator">
+            <tr>
+                <td class="display" colspan="4"> display 000000000000000 </td>
+            </tr>
+            <tr>
+                <td><button type="button" class="ac"> AC </button></td>
+                <td><button type="button" class="op"> / </button></td>
+                <td><button type="button" class="op"> * </button></td>
+                <td><button type="button" class="op"> <- </button></td>
+            </tr>
+            <tr>
+                <td><button type="button" class="num"> 7 </button></td>
+                <td><button type="button" class="num"> 8 </button></td>
+                <td><button type="button" class="num"> 9 </button></td>
+                <td><button type="button" class="op"> - </button></td>
+            </tr>
+            <tr>
+                <td><button type="button" class="num"> 4 </button></td>
+                <td><button type="button" class="num"> 5 </button></td>
+                <td><button type="button" class="num"> 6 </button></td>
+                <td rowspan="2">
+                    <button type="button" class="op"> + </button>
+                </td>
+            </tr>
+            <tr>
+                <td><button type="button" class="num"> 1 </button></td>
+                <td><button type="button" class="num"> 2 </button></td>
+                <td><button type="button" class="num"> 3 </button></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="button" class="num"> 0 </button>
+                </td>
+                <td><button type="button" class="num"> . </button></td>
+                <td><button type="button" class="op submit"> = </button></td>
+            </tr>
+        </table>
+    </div>
+    <script type="module" src="src/scrips.js"></script>
+</body>
+
+</html>
