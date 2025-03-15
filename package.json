@@ -1,7 +1,7 @@
 {
   "name": "calculat0r",
   "version": "1.0.0",
-  "description": "🧮 TS 연습: 계산기",
+  "description": "🧮 타입스크립트 실습: 계산기",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
