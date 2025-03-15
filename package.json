@@ -1,0 +1,23 @@
+{
+  "name": "calculat0r",
+  "version": "1.0.0",
+  "description": "🧮 TS 연습: 계산기",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zer0ken/calculat0r.git"
+  },
+  "author": "zer0ken",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zer0ken/calculat0r/issues"
+  },
+  "homepage": "https://github.com/zer0ken/calculat0r#readme",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
