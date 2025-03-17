@@ -36,10 +36,6 @@ td {
     height: 26%;
 }
 
-.display div::-webkit-scrollbar {
-    display: none;
-}
-
 .display {
     font-size: 2rem;
 }
@@ -51,6 +47,11 @@ td {
     overflow-x: scroll;
     white-space: nowrap;
 }
+
+.display-container div::-webkit-scrollbar {
+    display: none;
+}
+
 
 button {
     display: block;
