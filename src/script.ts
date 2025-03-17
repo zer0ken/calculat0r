@@ -76,7 +76,7 @@ function display() {
     $display!.textContent = a.toString();
 
     const $input = document.querySelector('.input');
-    $input!.textContent = `${a}${operator}${b} =`;
+    $input!.textContent = `= ${a}${operator}${b}`;
 }
 
 function clearAll() {

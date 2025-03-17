@@ -69,7 +69,7 @@ function display() {
     var $display = document.querySelector('.display');
     $display.textContent = a.toString();
     var $input = document.querySelector('.input');
-    $input.textContent = "".concat(a).concat(operator).concat(b, " =");
+    $input.textContent = "= ".concat(a).concat(operator).concat(b);
 }
 function clearAll() {
     a = '0';
