@@ -19,43 +19,46 @@
     <div class="container">
         <table class="calculator">
             <tr>
-                <td class="display" colspan="4"> display 000000000000000 </td>
+                <td colspan="4" class="display-container">
+                    <div class="display"> display 000000000000000 </div>
+                    <div class="input"> a b = </div>
+                </td>
             </tr>
             <tr>
                 <td><button type="button" class="ac"> AC </button></td>
-                <td><button type="button" class="op"> / </button></td>
-                <td><button type="button" class="op"> * </button></td>
-                <td><button type="button" class="op"> <- </button></td>
+                <td><button type="button" class="op div"> / </button></td>
+                <td><button type="button" class="op mul"> * </button></td>
+                <td><button type="button" class="op backspace"> <- </button></td>
             </tr>
             <tr>
-                <td><button type="button" class="num"> 7 </button></td>
-                <td><button type="button" class="num"> 8 </button></td>
-                <td><button type="button" class="num"> 9 </button></td>
-                <td><button type="button" class="op"> - </button></td>
+                <td><button type="button" class="num digit-7"> 7 </button></td>
+                <td><button type="button" class="num digit-8"> 8 </button></td>
+                <td><button type="button" class="num digit-9"> 9 </button></td>
+                <td><button type="button" class="op sub"> - </button></td>
             </tr>
             <tr>
-                <td><button type="button" class="num"> 4 </button></td>
-                <td><button type="button" class="num"> 5 </button></td>
-                <td><button type="button" class="num"> 6 </button></td>
+                <td><button type="button" class="num digit-4"> 4 </button></td>
+                <td><button type="button" class="num digit-5"> 5 </button></td>
+                <td><button type="button" class="num digit-6"> 6 </button></td>
                 <td rowspan="2">
-                    <button type="button" class="op"> + </button>
+                    <button type="button" class="op add"> + </button>
                 </td>
             </tr>
             <tr>
-                <td><button type="button" class="num"> 1 </button></td>
-                <td><button type="button" class="num"> 2 </button></td>
-                <td><button type="button" class="num"> 3 </button></td>
+                <td><button type="button" class="num digit-1"> 1 </button></td>
+                <td><button type="button" class="num digit-2"> 2 </button></td>
+                <td><button type="button" class="num digit-3"> 3 </button></td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="button" class="num"> 0 </button>
+                    <button type="button" class="num digit-0"> 0 </button>
                 </td>
-                <td><button type="button" class="num"> . </button></td>
-                <td><button type="button" class="op submit"> = </button></td>
+                <td><button type="button" class="num dot"> . </button></td>
+                <td><button type="button" class="op calculate"> = </button></td>
             </tr>
         </table>
     </div>
-    <script type="module" src="src/scrips.js"></script>
+    <script type="module" src="src/script.js"></script>
 </body>
 
 </html>
