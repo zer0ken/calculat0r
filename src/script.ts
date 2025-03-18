@@ -116,6 +116,9 @@ function calculate() {
             result = numA * numB;
             break;
         case '/':
+            if (numB == 0) {
+                return;
+            }
             result = parseInt((numA / numB).toString());
             break;
     }
