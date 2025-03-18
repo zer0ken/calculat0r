@@ -1,5 +1,21 @@
 // 컴파일: npx tsc .\src\script.ts
 
+type Operator = null | '+' | '-' | '*' | '/';
+
+const MAX_INPUT_DIGIT = 3;
+const MAX_DIPLAY_DIGIT = 10;
+
+let operator: Operator = null;
+let result: number = 0;
+let [a, b]: [string, string] = ['', ''];
+
+clearAll();
+display();
+
+/**
+ * DOM
+ */
+
 const $acBtn = document.querySelector('button.ac');
 $acBtn!.addEventListener('click', () => {
     clearAll();
@@ -57,13 +73,9 @@ for (let i = 0; i <= 9; i++) {
     });
 }
 
-clearAll();
-display();
-
-type Operator = null | '+' | '-' | '*' | '/';
-let operator: Operator = null;
-let result: number = 0;
-let [a, b]: [string, string] = ['', ''];
+/**
+ * 단위 기능
+ */
 
 function display() {
     const $display = document.querySelector('.display');
@@ -109,7 +121,7 @@ function calculate() {
     }
     console.log(`${a} ${operator} ${b} => ${result}`);
     
-    if (countDigits(result.toString()) > 10) {
+    if (countDigits(result.toString()) > MAX_DIPLAY_DIGIT) {
         result = NaN;
         a = '';
     } else {
@@ -120,9 +132,9 @@ function calculate() {
 }
 
 function attachDigit(digit: string) {
-    if (!operator && countDigits(a) < 3) {
+    if (!operator && countDigits(a) < MAX_INPUT_DIGIT) {
         a += digit;
-    } else if (operator && countDigits(b) < 3) {
+    } else if (operator && countDigits(b) < MAX_INPUT_DIGIT) {
         b += digit;
     }
 }

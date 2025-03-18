@@ -1,4 +1,14 @@
 // 컴파일: npx tsc .\src\script.ts
+var MAX_INPUT_DIGIT = 3;
+var MAX_DIPLAY_DIGIT = 10;
+var operator = null;
+var result = 0;
+var _a = ['', ''], a = _a[0], b = _a[1];
+clearAll();
+display();
+/**
+ * DOM
+ */
 var $acBtn = document.querySelector('button.ac');
 $acBtn.addEventListener('click', function () {
     clearAll();
@@ -56,11 +66,9 @@ var _loop_1 = function (i) {
 for (var i = 0; i <= 9; i++) {
     _loop_1(i);
 }
-clearAll();
-display();
-var operator = null;
-var result = 0;
-var _a = ['', ''], a = _a[0], b = _a[1];
+/**
+ * 단위 기능
+ */
 function display() {
     var $display = document.querySelector('.display');
     $display.textContent = result.toString();
@@ -101,7 +109,7 @@ function calculate() {
             break;
     }
     console.log("".concat(a, " ").concat(operator, " ").concat(b, " => ").concat(result));
-    if (countDigits(result.toString()) > 10) {
+    if (countDigits(result.toString()) > MAX_DIPLAY_DIGIT) {
         result = NaN;
         a = '';
     }
@@ -112,10 +120,10 @@ function calculate() {
     operator = null;
 }
 function attachDigit(digit) {
-    if (!operator && countDigits(a) < 3) {
+    if (!operator && countDigits(a) < MAX_INPUT_DIGIT) {
         a += digit;
     }
-    else if (operator && countDigits(b) < 3) {
+    else if (operator && countDigits(b) < MAX_INPUT_DIGIT) {
         b += digit;
     }
 }
