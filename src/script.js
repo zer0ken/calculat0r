@@ -97,9 +97,10 @@ function calculate() {
             result = numA * numB;
             break;
         case '/':
-            result = Number((numA / numB).toFixed(0));
+            result = parseInt((numA / numB).toString());
             break;
     }
+    console.log("".concat(a, " ").concat(operator, " ").concat(b, " => ").concat(result));
     if (countDigits(result.toString()) > 10) {
         result = NaN;
         a = '';
