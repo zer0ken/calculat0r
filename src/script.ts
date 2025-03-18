@@ -8,7 +8,7 @@ $acBtn!.addEventListener('click', () => {
 
 const $backspaceBtn = document.querySelector('button.backspace');
 $backspaceBtn!.addEventListener('click', () => {
-    dettachFromB();
+    eraseFromBack();
     display();
 });
 
@@ -26,126 +26,115 @@ $calculateBtn!.addEventListener('click', () => {
     const [op, cls] = element;
     const $opBtn = document.querySelector(`button.op.${cls}`);
     $opBtn!.addEventListener('click', () => {
-        operator = op as Operator;
+        if (countDigits(a)) {
+            operator = op as Operator;
+        }
         display();
     });
 });
 
 const $subBtn = document.querySelector('button.op.sub');
 $subBtn!.addEventListener('click', () => {
-    console.log('operator', operator);
-    console.log('b', b);
-    if ([' ', '?'].includes(operator) || countDigitOfB()) {
+    if (!a) {
+        attachDigit('-');
+    } else if (!operator && countDigits(a)) {
         operator = '-';
-        display();
-    } else if (b && b.includes('-')) {
-        operator = '-';
-        b = b.substring(1);
-        display();
-    } else {
-        attachToB('-');
-        display();
+    } else if (operator) {
+        if (b) {
+            operator = '-';
+        } else {
+            attachDigit('-');
+        }
     }
+    display();
 });
 
 for (let i = 0; i <= 9; i++) {
     const $numBtn = document.querySelector(`button.num.digit-${i}`);
     $numBtn!.addEventListener('click', () => {
-        attachToB(String(i));
+        attachDigit(String(i));
         display();
     });
 }
 
-const $dotBtn = document.querySelector('button.dot');
-$dotBtn!.addEventListener('click', () => {
-    if (!b.includes('.')) {
-        attachToB('.');
-        display();
-    }
-});
-
 clearAll();
 display();
 
-type Operator = ' ' | '?' | '+' | '-' | '*' | '/';
-let operator: Operator = ' ';
-let [a, b]: [string, string] = ['0', ''];
+type Operator = null | '+' | '-' | '*' | '/';
+let operator: Operator = null;
+let result: number = 0;
+let [a, b]: [string, string] = ['', ''];
 
 function display() {
     const $display = document.querySelector('.display');
-    $display!.textContent = a.toString();
+    $display!.textContent = result.toString();
 
     const $input = document.querySelector('.input');
-    $input!.textContent = `= ${a}${operator}${b}`;
+    $input!.textContent = `${a}${operator ? ' ' + operator + ' ' : ''}${b} =>`;
 }
 
 function clearAll() {
-    a = '0';
+    a = '';
     b = '';
-    operator = ' ';
-}
-
-function attachToB(num: string) {
-    if (b.length && b.at(b.length - 1) == '?') {
-        b = b.substring(0, b.length - 1);
-    }
-    if (countDigitOfB() < 3) {
-        b += num;
-    }
-}
-
-function dettachFromB() {
-    if (b.length) {
-        b = b.substring(0, b.length - 1);
-    }
+    operator = null;
+    result = 0;
 }
 
 function calculate() {
-    console.log('@ calculate()');
-    if (!countDigitOfB()) {
-        console.log('b has no digit');
-        attachToB('?');
+    if (!countDigits(a)) {
         return;
     }
-    if ([' ', '?'].includes(operator)) {
-        console.log('oprator unset');
-        operator = '?';
+    if (!operator && countDigits(a)) {
+        result = Number(a);
         return;
     }
-
-    let tempA: number = Number(a);
-    const tempB: number = Number(b);
+    if (operator && !countDigits(b)) {
+        return;
+    }
+    const numA: number = Number(a);
+    const numB: number = Number(b);
     switch (operator) {
         case '+':
-            tempA = tempA + tempB;
+            result = numA + numB;
             break;
         case '-':
-            tempA = tempA - tempB;
+            result = numA - numB;
             break;
         case '*':
-            tempA = tempA * tempB;
+            result = numA * numB;
             break;
         case '/':
-            if (tempB == 0) {
-                console.log('zero division');
-                return;
-            }
-            tempA = tempA / tempB;
+            result = Number((numA / numB).toFixed(0));
             break;
     }
-    a = Number(tempA.toFixed(3)).toString();
-    operator = ' ';
+    if (countDigits(result.toString()) > 10) {
+        result = NaN;
+        a = '';
+    } else {
+        a = result.toString();
+    }
     b = '';
+    operator = null;
 }
 
-function countDigitOfB() {
-    if (!b) {
-        return 0;
+function attachDigit(digit: string) {
+    if (!operator && countDigits(a) < 3) {
+        a += digit;
+    } else if (operator && countDigits(b) < 3) {
+        b += digit;
     }
-    return (
-        b.length -
-        Number(b.includes('?')) -
-        Number(b.includes('.')) -
-        Number(b.includes('-'))
-    );
+}
+
+function eraseFromBack() {
+    if (b) {
+        b = b.substring(0, b.length - 1);
+    } else if (operator) {
+        operator = null;
+    } else if (a) {
+        a = a.substring(0, a.length - 1);
+    }
+}
+
+function countDigits(number: string) {
+    return number.length - Number(number.includes('-'));
 }
